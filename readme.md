@@ -8,3 +8,12 @@ All you need to do is:
 - add dependency to `io.github.leviysoft:scala-kotlin-compat_2.13:<version>` or `io.github.leviysoft:scala-kotlin-compat_3:<version>` depending to Scala version in you project
 - import `com.github.leviysoft.sk.*`
 - call `asJava` \ `asScala` \ `toJava` \ `toScala` methods
+
+The following components of `scala.jdk` are implemented:
+- [x] CollectionConverters
+- [x] DurationConverters
+- [ ] FunctionConverters
+- [x] FutureConverters
+- [ ] OptionConverters
+- [ ] StreamConverters
+ 
