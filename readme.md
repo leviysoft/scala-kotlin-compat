@@ -14,6 +14,6 @@ The following components of `scala.jdk` are implemented:
 - [x] DurationConverters
 - [ ] FunctionConverters
 - [x] FutureConverters
-- [ ] OptionConverters
+- [x] OptionConverters
 - [ ] StreamConverters
  
