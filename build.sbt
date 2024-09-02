@@ -29,5 +29,6 @@ lazy val root = (project in file("."))
     name := "scala-kotlin-compat",
     kotlinVersion := "1.9.25",
     kotlincJvmTarget := "11",
+    kotlincOptions += "-Xjvm-default=all",
     kotlinLib("stdlib")
   )

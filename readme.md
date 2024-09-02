@@ -12,7 +12,7 @@ All you need to do is:
 The following components of `scala.jdk` are implemented:
 - [x] CollectionConverters
 - [x] DurationConverters
-- [ ] FunctionConverters
+- [x] FunctionConverters
 - [x] FutureConverters
 - [x] OptionConverters
 - [ ] StreamConverters
