@@ -6,8 +6,11 @@ import kotlinx.coroutines.*
 
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
+import scala.concurrent.ExecutionContext
 import scala.concurrent.Future
 import scala.concurrent.Promise
+import scala.util.Failure
+import scala.util.Success
 
 fun <T> CoroutineScope.scalaFuture(
     context: CoroutineContext = EmptyCoroutineContext,
@@ -44,4 +47,16 @@ fun Job.asScalaFuture(): Future<scala.runtime.BoxedUnit> {
         else promise.failure(cause)
     }
     return promise.future()
+}
+
+fun <T> Future<T>.asDeferred(executor: ExecutionContext): Deferred<T> {
+    val result = CompletableDeferred<T>()
+    this.onComplete({ res ->
+        when(res) {
+            is Success -> result.complete(res.value())
+            is Failure -> result.completeExceptionally(res.exception())
+            else -> throw IllegalStateException("Unreachable")
+        }
+    }, executor)
+    return result
 }
