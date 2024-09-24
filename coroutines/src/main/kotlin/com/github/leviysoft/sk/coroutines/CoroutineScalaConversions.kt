@@ -11,6 +11,8 @@ import scala.concurrent.Future
 import scala.concurrent.Promise
 import scala.util.Failure
 import scala.util.Success
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 
 fun <T> CoroutineScope.scalaFuture(
     context: CoroutineContext = EmptyCoroutineContext,
@@ -59,4 +61,16 @@ fun <T> Future<T>.asDeferred(executor: ExecutionContext): Deferred<T> {
         }
     }, executor)
     return result
+}
+
+suspend fun <T> Future<T>.await(executor: ExecutionContext): T {
+    return suspendCancellableCoroutine { cont: CancellableContinuation<T> ->
+        this.onComplete({ res ->
+            when(res) {
+                is Success -> cont.resume(res.value())
+                is Failure -> cont.resumeWithException(res.exception())
+                else -> throw IllegalStateException("Unreachable")
+            }
+        }, executor)
+    }
 }
