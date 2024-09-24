@@ -22,13 +22,23 @@ inThisBuild(
     )
 )
 
-lazy val root = (project in file("."))
+lazy val core = (project in file("core"))
   .enablePlugins(KotlinPlugin)
   .settings(
-    organization := "io.github.leviysoft",
-    name := "scala-kotlin-compat",
-    kotlinVersion := "1.9.25",
-    kotlincJvmTarget := "11",
-    kotlincOptions += "-Xjvm-default=all",
-    kotlinLib("stdlib")
+      organization := "io.github.leviysoft",
+      name := "scala-kotlin-compat",
+      kotlinVersion := "1.9.25",
+      kotlincJvmTarget := "11",
+      kotlincOptions += "-Xjvm-default=all",
+      kotlinLib("stdlib")
+  )
+
+lazy val root = (project in file("."))
+  .dependsOn(core)
+  .aggregate(core)
+  .settings(
+      crossScalaVersions := Nil,
+      publish := {},
+      publishArtifact := false,
+      publish / skip := true
   )
