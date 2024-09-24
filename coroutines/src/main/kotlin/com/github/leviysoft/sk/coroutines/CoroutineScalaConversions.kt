@@ -18,7 +18,7 @@ fun <T> CoroutineScope.scalaFuture(
     context: CoroutineContext = EmptyCoroutineContext,
     start: CoroutineStart = CoroutineStart.DEFAULT,
     block: suspend CoroutineScope.() -> T
-) : scala.concurrent.Future<T> {
+) : Future<T> {
     require(!start.isLazy) { "$start start is not supported" }
     val newContext = this.newCoroutineContext(context)
     val promise = Promise.apply<T>()

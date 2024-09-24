@@ -43,7 +43,9 @@ lazy val coroutines = (project in file("coroutines"))
     kotlincOptions += "-Xjvm-default=all",
     kotlinLib("stdlib"),
     libraryDependencies ++= Seq(
-      "org.jetbrains.kotlinx" % "kotlinx-coroutines-core" % "1.8.1"
+      "org.jetbrains.kotlinx" % "kotlinx-coroutines-core" % "1.8.1",
+      "com.github.sbt" % "junit-interface" % "0.13.3" % Test,
+      "org.jetbrains.kotlin" % "kotlin-test-junit" % kotlinVersion.value % Test
     )
   )
 
