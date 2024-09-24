@@ -33,9 +33,23 @@ lazy val core = (project in file("core"))
       kotlinLib("stdlib")
   )
 
+lazy val coroutines = (project in file("coroutines"))
+  .enablePlugins(KotlinPlugin)
+  .settings(
+    organization := "io.github.leviysoft",
+    name := "scala-kotlin-coroutines-compat",
+    kotlinVersion := "1.9.25",
+    kotlincJvmTarget := "11",
+    kotlincOptions += "-Xjvm-default=all",
+    kotlinLib("stdlib"),
+    libraryDependencies ++= Seq(
+      "org.jetbrains.kotlinx" % "kotlinx-coroutines-core" % "1.8.1"
+    )
+  )
+
 lazy val root = (project in file("."))
-  .dependsOn(core)
-  .aggregate(core)
+  .dependsOn(core, coroutines)
+  .aggregate(core, coroutines)
   .settings(
       crossScalaVersions := Nil,
       publish := {},
