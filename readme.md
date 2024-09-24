@@ -16,4 +16,5 @@ The following components of `scala.jdk` are implemented:
 - [x] FutureConverters
 - [x] OptionConverters
 - [ ] StreamConverters
- 
+
+In addition, `scala-kotlin-coroutines-compat` provides utilities for calling `suspend fun`s as `Future`s
