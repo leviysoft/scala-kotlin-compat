@@ -1,8 +1,8 @@
 import kotlin.Keys._
 
-ThisBuild / scalaVersion := "3.3.3"
+ThisBuild / scalaVersion := "3.3.4"
 
-ThisBuild / crossScalaVersions := Seq("2.13.14", scalaVersion.value)
+ThisBuild / crossScalaVersions := Seq("2.13.15", scalaVersion.value)
 
 inThisBuild(
     List(
