@@ -1,6 +1,6 @@
 import kotlin.Keys._
 
-ThisBuild / scalaVersion := "3.3.4"
+ThisBuild / scalaVersion := "3.3.5"
 
 ThisBuild / crossScalaVersions := Seq("2.13.16", scalaVersion.value)
 
