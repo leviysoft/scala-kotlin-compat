@@ -6,8 +6,6 @@ ThisBuild / crossScalaVersions := Seq("2.13.16", scalaVersion.value)
 
 inThisBuild(
     List(
-        sonatypeCredentialHost := "s01.oss.sonatype.org",
-        sonatypeRepository := "https://s01.oss.sonatype.org/service/local",
         organization := "io.github.leviysoft",
         homepage := Some(url("https://github.com/leviysoft/scala-kotlin-compat")),
         licenses := List("WTFPL" -> url("http://www.wtfpl.net")),
