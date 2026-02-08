@@ -25,9 +25,8 @@ lazy val core = (project in file("core"))
   .settings(
       organization := "io.github.leviysoft",
       name := "scala-kotlin-compat",
-      kotlinVersion := "1.9.25",
+      kotlinVersion := "2.3.10",
       kotlincJvmTarget := "11",
-      kotlincOptions += "-Xjvm-default=all",
       kotlinLib("stdlib"),
       autoScalaLibrary := true,
       crossPaths := true
@@ -38,14 +37,13 @@ lazy val coroutines = (project in file("coroutines"))
   .settings(
     organization := "io.github.leviysoft",
     name := "scala-kotlin-coroutines-compat",
-    kotlinVersion := "1.9.25",
+    kotlinVersion := "2.3.10",
     kotlincJvmTarget := "11",
-    kotlincOptions += "-Xjvm-default=all",
     kotlinLib("stdlib"),
     autoScalaLibrary := true,
     crossPaths := true,
     libraryDependencies ++= Seq(
-      "org.jetbrains.kotlinx" % "kotlinx-coroutines-core" % "1.8.1",
+      "org.jetbrains.kotlinx" % "kotlinx-coroutines-core" % "1.10.2",
       "com.github.sbt" % "junit-interface" % "0.13.3" % Test,
       "org.jetbrains.kotlin" % "kotlin-test-junit" % kotlinVersion.value % Test
     )
