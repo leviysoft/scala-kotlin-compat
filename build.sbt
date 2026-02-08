@@ -1,8 +1,8 @@
 import kotlin.Keys._
 
-ThisBuild / scalaVersion := "3.3.5"
+ThisBuild / scalaVersion := "3.3.7"
 
-ThisBuild / crossScalaVersions := Seq("2.13.16", scalaVersion.value)
+ThisBuild / crossScalaVersions := Seq("2.13.18", scalaVersion.value)
 
 inThisBuild(
     List(
@@ -28,7 +28,9 @@ lazy val core = (project in file("core"))
       kotlinVersion := "1.9.25",
       kotlincJvmTarget := "11",
       kotlincOptions += "-Xjvm-default=all",
-      kotlinLib("stdlib")
+      kotlinLib("stdlib"),
+      autoScalaLibrary := true,
+      crossPaths := true
   )
 
 lazy val coroutines = (project in file("coroutines"))
@@ -40,6 +42,8 @@ lazy val coroutines = (project in file("coroutines"))
     kotlincJvmTarget := "11",
     kotlincOptions += "-Xjvm-default=all",
     kotlinLib("stdlib"),
+    autoScalaLibrary := true,
+    crossPaths := true,
     libraryDependencies ++= Seq(
       "org.jetbrains.kotlinx" % "kotlinx-coroutines-core" % "1.8.1",
       "com.github.sbt" % "junit-interface" % "0.13.3" % Test,
